@@ -1,0 +1,21 @@
+server:
+  port: 3355
+
+spring:
+  cloud:
+    config:
+      label: master  #分支名称
+      name: application  #读取文件名称前缀
+      profile: dev  #读取文件名称后缀
+      uri: http://localhost:3344  #配置中心地址
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
+#暴露监控点，这里用通配符简单一些？
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
